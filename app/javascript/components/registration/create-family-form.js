@@ -5,8 +5,8 @@ export default class FamilyForm extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      existingFamilyName: '',
-      newFamilyName: '',
+      name: '',
+      displayName: '',
       error: '',
       submitting: false,
     }
@@ -38,14 +38,15 @@ export default class FamilyForm extends Component {
   handleSubmit = () => {
     this.toggleSubmitting(true)
     if (!this.state.submitting) {
-      $.post('/join-family', {
-        existing_family_name: this.state.existingFamilyName,
+      $.post('/create-family', {
+        name: this.state.name,
+        display_name: this.state.displayName
       }).then(function (response) {
         if (response.error) {
           this.addError(response.error)
           this.toggleSubmitting(false)
         } else {
-          this.props.history.push('/family')
+          window.location.href = '/'
         }
       }.bind(this))
     }
@@ -56,25 +57,17 @@ export default class FamilyForm extends Component {
         <div>
           {this.state.error.length > 0
           ? (<div className='error-message'><span>{this.state.error}</span></div>) : null}
-          <div className='title'>Join an existing family</div>
-          <input
-            type='text'
-            name='existingFamilyName'
-            placeholder='lesson_family'
-            onChange={this.handleChange}
-          />
-          <a 
-            className='button'
-            onClick={this.handleSubmit}
-            disabled={this.state.submitting}
-          >
-            {this.state.submitting ? 'Joining family...' : 'Join family'}
-          </a>
           <div className='title'>Or create a new family</div>
           <input
             type='text'
-            name='newFamilyName'
-            placeholder='Leeson'
+            name='name'
+            placeholder='leeson_family'
+            onChange={this.handleChange}
+          />
+          <input
+            type='text'
+            name='displayName'
+            placeholder='The Leeson Family'
             onChange={this.handleChange}
           />
           <a 

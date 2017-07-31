@@ -19,7 +19,25 @@ class FamilyFacade
     true
   end
 
+  def create_family!
+    return false unless valid?
+    return false unless valid_display_name
+    return false if existing_family
+
+    @family = Family.create(name: name, display_name: display_name)
+    user.update_attribute(:family_id, @family.id)
+  end
+
   private
+
+  def valid_display_name
+    if display_name.present?
+      true
+    else
+      errors.add(:display_name, "can't be blank")
+      false
+    end
+  end
 
   def no_existing_family
     if @family = Family.find_by(name: name)
@@ -27,6 +45,15 @@ class FamilyFacade
     else
       errors.add(:family, "doesn't exist")
       true
+    end
+  end
+
+  def existing_family
+    if @family = Family.find_by(name: name)
+      errors.add(:family, "already exists")
+      true
+    else
+      false
     end
   end
 end

@@ -22,6 +22,15 @@ class RegistrationController < ApplicationController
     end
   end
 
+  def create_family
+    @family_facade = FamilyFacade.new(user: current_user, name: params[:name], display_name: params[:display_name])
+    if @family_facade.create_family!
+      render json: {}, status: 200
+    else
+      render json: { error: @family_facade.errors.full_messages.first }.to_json, status: 200
+    end
+  end
+
   private
 
   def registration_params
