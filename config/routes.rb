@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
   root 'root#home'
   get '/home', to: 'root#home', as: :home
-  get '/signup', to: 'users#new', as: :signup
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  get '/signup', to: 'registration#new', as: :signup
+  post '/signup', to: 'registration#create'
+
+  post '/join-family', to: 'registration#join_family'
+  post '/create-family', to: 'registration#create_family'
+
   resources :users
 end
