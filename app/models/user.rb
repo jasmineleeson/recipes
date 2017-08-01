@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   belongs_to :family, optional: true
+  has_many :recipes
 
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }
