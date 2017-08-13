@@ -1,4 +1,21 @@
+/////////// colors
+
+$light-purple: #8470ff;
+$purple: #6a5acd;
+$dark-purple: #483d8b;
+
+////////////
+
+
 .jasmine {
   border-style: solid;
-  border-color: blue;
+  border-color: $dark-purple;
+}
+
+a {
+  color: $light-purple;
+}
+
+a:hover {
+  color: $purple;
 }
