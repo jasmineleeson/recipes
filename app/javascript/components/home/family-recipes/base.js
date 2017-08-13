@@ -16,12 +16,24 @@ export default class FamilyRecipesBase extends Component {
     this.setState({ recipes })
   }
 
+  deleteRecipe = (index) => {
+    let recipes = this.state.recipes
+    recipes.splice(index, 1)
+    this.setState({ recipes })
+  }
+
+  editRecipe = (index, recipe) => {
+    let recipes = this.state.recipes
+    recipes[index] = recipe
+    this.setState({ recipes })
+  }
+
   render () {
     return (
       <div className="tabs-panel" id="panel2">
         <div className='row' >
           <SideBar addRecipe={this.addRecipe} />
-          <Recipes recipes={this.state.recipes} />
+          <Recipes editRecipe={this.editRecipe} deleteRecipe={this.deleteRecipe} recipes={this.state.recipes} />
         </div>
       </div>
     )

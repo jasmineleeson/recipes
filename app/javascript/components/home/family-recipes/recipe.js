@@ -5,16 +5,44 @@ export default class Recipe extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      recipe: this.props.recipe
+      submitting: false,
+      error: '',
     }
   }
 
-  updateRecipe = (recipe) => {
-    this.setState({ recipe })
+  addError = (error) => {
+    this.setState({ error })
+  }
+
+  toggleSubmitting = (submitting) => {
+    if (submitting === undefined) {
+      submitting = !this.state.submitting
+    }
+    this.setState({ submitting })
+  }
+
+  handleClick = (e) => {
+    this.toggleSubmitting(true)
+    if (!this.state.submitting) {
+      $.ajax({
+          type: 'DELETE',
+          url: `/recipe/${this.props.recipe.id}`,
+          success: function(response) {
+            if (response.error) {
+              this.addError(response.error)
+              this.toggleSubmitting(false)
+            } else {
+              this.props.deleteRecipe(this.props.index)
+              this.toggleSubmitting(false)
+            }
+          }.bind(this),
+          dataType: 'json'
+        })
+    }
   }
 
   render () {
-    const { recipe } = this.state
+    const { index, recipe, editRecipe } = this.props
     return (
       <div className='jasmine'>
         <h4>{recipe.name}</h4>
@@ -23,7 +51,10 @@ export default class Recipe extends Component {
         <p>{`Ingredients: ${recipe.ingredients}`}</p>
         <p>{`Directions: ${recipe.directions}`}</p>
         <button className="button" data-open={`editRecipe${recipe.id}`}>Edit recipe</button>
-        <EditRecipe recipe={recipe} updateRecipe={this.updateRecipe} />
+        <EditRecipe recipe={recipe} editRecipe={editRecipe} index={index} />
+        <button className="alert button" onClick={this.handleClick} disabled={this.state.submitting}>
+          {this.state.submitting ? 'Deleting Recipe...' : 'Delete Recipe'}
+        </button>
       </div>
     )
   }

@@ -30,6 +30,12 @@ class RecipeFacade
     serialize_recipe(recipe).to_json
   end
 
+  def delete_recipe
+    return false unless existing_recipe
+    return false unless destroy_recipe
+    true
+  end
+
   private
 
   def serialize_recipe(recipe)
@@ -42,17 +48,6 @@ class RecipeFacade
       directions: recipe.directions,
       notes: recipe.notes
     }
-  end
-
-  def update_recipe
-    @recipe.update_attributes(
-      name: name,
-      serves: serves,
-      prep_time: prep_time,
-      ingredients: ingredients,
-      directions: directions,
-      notes: notes
-    )
   end
 
   def existing_recipe
@@ -75,5 +70,20 @@ class RecipeFacade
       family: family
     )
     @recipe.save!
+  end
+
+  def update_recipe
+    @recipe.update_attributes(
+      name: name,
+      serves: serves,
+      prep_time: prep_time,
+      ingredients: ingredients,
+      directions: directions,
+      notes: notes
+    )
+  end
+
+  def destroy_recipe
+    @recipe.destroy
   end
 end

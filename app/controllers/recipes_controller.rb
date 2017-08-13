@@ -21,6 +21,16 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    recipe = Recipe.find(params[:id])
+    @recipe_facade = RecipeFacade.new(user: current_user, family: current_user.family, recipe: recipe)
+    if @recipe_facade.delete_recipe
+      render json: {}, status: 200
+    else
+      render json: { error: @recipe_facade.errors.full_messages.first }.to_json, status: 200
+    end
+  end
+
   private
 
   def recipe_params
