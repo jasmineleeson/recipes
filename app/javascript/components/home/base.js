@@ -2,7 +2,7 @@ import React from 'react'
 import FamilyProfileBase from './family-profile/base'
 import FamilyRecipesBase from './family-recipes/base'
 
-export default function HomeBase () {
+export default function HomeBase ({ user, family, recipes}) {
   return (
     <div>
       <div className="row">
@@ -13,8 +13,8 @@ export default function HomeBase () {
           </ul>
 
           <div className="tabs-content" data-tabs-content="example-tabs">
-            <FamilyProfileBase />
-            <FamilyRecipesBase />
+            <FamilyProfileBase family={family}/>
+            <FamilyRecipesBase recipes={recipes}/>
           </div>
         </div>
       </div>
