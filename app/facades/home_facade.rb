@@ -41,6 +41,7 @@ class HomeFacade
 
   def serialize_recipe(recipe)
     {
+      id: recipe.id,
       name: recipe.name,
       serves: recipe.serves,
       prepTime: recipe.prep_time,
