@@ -1,12 +1,12 @@
 import React from 'react'
-import NewRecipe from './new-recipe'
+import EditRecipe from './edit-recipe'
 
-export default function SideBar () {
+export default function SideBar ({ addRecipe }) {
   return (
     <div className='small-3 columns jasmine'>
       
     <button className="button" data-open="newRecipe">Add recipe</button>
-    <NewRecipe />
+    <EditRecipe addRecipe={addRecipe} />
     </div>
   )
 }
