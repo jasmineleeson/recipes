@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   post '/create-family', to: 'registration#create_family'
 
   post '/recipe', to: 'recipes#create'
-  post '/recipe/:id', to: 'recipes#update'
+  patch '/recipe/:id', to: 'recipes#update'
+  delete '/recipe/:id', to: 'recipes#destroy'
 
   resources :users
 end

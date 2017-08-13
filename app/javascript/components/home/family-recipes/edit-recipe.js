@@ -80,23 +80,29 @@ export default class EditRecipe extends Component {
 
   submitEditRecipe = (recipe) => {
     if (!this.state.submitting) {
-      $.post(`/recipe/${recipe.id}`, {
-        name: this.state.name,
-        serves: this.state.serves,
-        prep_time: this.state.prepTime,
-        ingredients: this.state.ingredients,
-        directions: this.state.directions,
-        notes: this.state.notes,
-      }).then(function (response) {
-        if (response.error) {
-          this.addError(response.error)
-          this.toggleSubmitting(false)
-        } else if (response.recipe) {
-          this.props.updateRecipe(JSON.parse(response.recipe))
-          this.toggleSubmitting(false)
-          $(`#editRecipe${recipe.id}`).foundation('close')
-        }
-      }.bind(this))
+      $.ajax({
+        type: 'PATCH',
+        data: {
+          name: this.state.name,
+          serves: this.state.serves,
+          prep_time: this.state.prepTime,
+          ingredients: this.state.ingredients,
+          directions: this.state.directions,
+          notes: this.state.notes
+        },
+        url: `/recipe/${recipe.id}`,
+        success: function(response) {
+          if (response.error) {
+            this.addError(response.error)
+            this.toggleSubmitting(false)
+          } else if (response.recipe) {
+            this.props.editRecipe(this.props.index, JSON.parse(response.recipe))
+            this.toggleSubmitting(false)
+            $(`#editRecipe${recipe.id}`).foundation('close')
+          }
+        }.bind(this),
+        dataType: 'json'
+      })
     }
   }
 
