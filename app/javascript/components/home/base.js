@@ -1,15 +1,21 @@
 import React from 'react'
-import Routes from './routes'
-import { Link } from 'react-router-dom'
+import FamilyProfileBase from './family-profile/base'
+import FamilyRecipesBase from './family-recipes/base'
 
 export default function HomeBase () {
   return (
     <div>
-      <div className="small-12 medium-9 small-centered columns">
-        <div className="jasmine">
-          <Link to={`/`}>Family Profile</Link>
-          <Link to={`/family-recipes`}>Family Recipes</Link>
-          <Routes />
+      <div className="row">
+        <div className="columns">
+          <ul className="tabs" data-tabs id="example-tabs">
+            <li className="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+            <li className="tabs-title"><a href="#panel2">Tab 2</a></li>
+          </ul>
+
+          <div className="tabs-content" data-tabs-content="example-tabs">
+            <FamilyProfileBase />
+            <FamilyRecipesBase />
+          </div>
         </div>
       </div>
     </div>

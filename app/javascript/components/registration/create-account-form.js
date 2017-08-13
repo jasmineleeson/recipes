@@ -31,7 +31,7 @@ class CreateAccountForm extends Component {
     })
   }
 
-  toggleSubmitting (submitting) {
+  toggleSubmitting = (submitting) => {
     if (submitting === undefined) {
       submitting = !this.state.submitting
     }

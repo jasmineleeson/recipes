@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   post '/join-family', to: 'registration#join_family'
   post '/create-family', to: 'registration#create_family'
 
+  post '/recipe', to: 'recipes#create'
+
   resources :users
 end
