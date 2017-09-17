@@ -143,22 +143,19 @@ export default class EditRecipe extends Component {
               value={this.state.prepTime}
             />
             <label>Ingredients</label>
-            <input
-              type='text'
+            <textarea
               name='ingredients'
               onChange={this.handleChange}
               value={this.state.ingredients}
             />
             <label>Directions</label>
-            <input
-              type='text'
+            <textarea
               name='directions'
               onChange={this.handleChange}
               value={this.state.directions}
             />
             <label>Notes</label>
-              <input
-                type='text'
+              <textarea
                 name='notes'
                 onChange={this.handleChange}
                 value={this.state.notes}
