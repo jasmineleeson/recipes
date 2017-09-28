@@ -56,6 +56,14 @@ export default class EditRecipe extends Component {
     }
   }
 
+  closeModal = () => {
+    document.getElementById(this.id()).style.display = "none"
+  }
+
+  id = () => {
+    return (this.props.recipe ? `editRecipe${this.props.recipe.id}` : 'newRecipe')
+  }
+
   submitCreateRecipe = () => {
     if (!this.state.submitting) {
       $.post('/recipe', {
@@ -109,8 +117,11 @@ export default class EditRecipe extends Component {
   render () {
     const { recipe } = this.props
     return (
-      <div className="reveal" id={recipe ? `editRecipe${recipe.id}` : 'newRecipe' } data-reveal=''>
-        <h1>{recipe ? 'Edit Recipe' : 'New Recipe'}</h1>
+      <div className='modal' id={this.id()}>
+        <div className='modal-content'>
+          <button className="button" onClick={this.closeModal}>Close</button>
+          <h1>{recipe ? 'Edit Recipe' : 'New Recipe'}</h1>
+
           <div>
             {this.state.error.length > 0
               ? (<div className='error-message'><span>{this.state.error}</span></div>) : null}
@@ -169,9 +180,11 @@ export default class EditRecipe extends Component {
                 }
             </a>
           </div>
-        <button className="close-button" data-close='' aria-label="Close modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
+          <button className="close-button" data-close='' aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       </div>
     )
   }

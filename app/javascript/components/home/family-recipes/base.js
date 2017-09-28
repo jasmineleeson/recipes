@@ -3,12 +3,6 @@ import SideBar from './side-bar'
 import Recipes from './recipes'
 
 export default class FamilyRecipesBase extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      recipes: this.props.recipes
-    }
-  }
 
   addRecipe = (recipe) => {
     const recipes = this.state.recipes
@@ -22,20 +16,31 @@ export default class FamilyRecipesBase extends Component {
     this.setState({ recipes })
   }
 
+  componentDidMount () {
+    $.get('/home-data').then(function (response) {
+      this.setState({
+        recipes: response.recipes
+      })
+    }.bind(this))
+  }
+
   editRecipe = (index, recipe) => {
     let recipes = this.state.recipes
     recipes[index] = recipe
     this.setState({ recipes })
   }
 
+
   render () {
-    return (
-      <div className="tabs-panel" id="panel2">
+    if (this.state) {
+      return (
         <div className='row' >
           <SideBar addRecipe={this.addRecipe} />
           <Recipes editRecipe={this.editRecipe} deleteRecipe={this.deleteRecipe} recipes={this.state.recipes} />
         </div>
-      </div>
-    )
+      )
+    } else {
+      return <div>loading</div>
+    }
   }
 }
