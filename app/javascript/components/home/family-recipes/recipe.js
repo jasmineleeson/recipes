@@ -41,6 +41,10 @@ export default class Recipe extends Component {
     }
   }
 
+  openModal = () => {
+    document.getElementById(`editRecipe${this.props.recipe.id}`).style.display = "block"
+  }
+
   render () {
     const { index, recipe, editRecipe } = this.props
     return (
@@ -50,7 +54,7 @@ export default class Recipe extends Component {
         <p>{`Prep Time: ${recipe.prepTime}`}</p>
         <p>{`Ingredients: ${recipe.ingredients}`}</p>
         <p>{`Directions: ${recipe.directions}`}</p>
-        <button className="button" data-open={`editRecipe${recipe.id}`}>Edit recipe</button>
+        <button className="button" onClick={this.openModal}>Edit recipe</button>
         <EditRecipe recipe={recipe} editRecipe={editRecipe} index={index} />
         <button className="alert button" onClick={this.handleClick} disabled={this.state.submitting}>
           {this.state.submitting ? 'Deleting Recipe...' : 'Delete Recipe'}

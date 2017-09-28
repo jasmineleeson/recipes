@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'root#home'
   get '/home', to: 'root#home', as: :home
+  get '/home-data', to: 'root#home_data'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
