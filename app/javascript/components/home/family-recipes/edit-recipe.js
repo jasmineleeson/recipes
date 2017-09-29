@@ -64,6 +64,19 @@ export default class EditRecipe extends Component {
     return (this.props.recipe ? `editRecipe${this.props.recipe.id}` : 'newRecipe')
   }
 
+  clearForm = () => {
+    this.setState({
+      name: '',
+      serves: '',
+      prepTime: '',
+      ingredients: '',
+      directions: '',
+      notes: '',
+      error: '',
+      submitting: false,
+    })
+  }
+
   submitCreateRecipe = () => {
     if (!this.state.submitting) {
       $.post('/recipe', {
@@ -80,7 +93,8 @@ export default class EditRecipe extends Component {
         } else if (response.recipe) {
           this.props.addRecipe(JSON.parse(response.recipe))
           this.toggleSubmitting(false)
-          $('#newRecipe').foundation('close')
+          this.closeModal()
+          this.clearForm()
         }
       }.bind(this))
     }
