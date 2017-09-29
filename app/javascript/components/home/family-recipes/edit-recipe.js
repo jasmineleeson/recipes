@@ -120,7 +120,7 @@ export default class EditRecipe extends Component {
           } else if (response.recipe) {
             this.props.editRecipe(this.props.index, JSON.parse(response.recipe))
             this.toggleSubmitting(false)
-            $(`#editRecipe${recipe.id}`).foundation('close')
+            this.closeModal()
           }
         }.bind(this),
         dataType: 'json'
