@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'registration#new', as: :signup
   post '/signup', to: 'registration#create'
+  get '/family', to: 'registration#new'
 
   post '/join-family', to: 'registration#join_family'
   post '/create-family', to: 'registration#create_family'

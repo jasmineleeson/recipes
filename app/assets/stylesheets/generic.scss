@@ -1,12 +1,94 @@
 /////////// colors
+$extremely-light-purple: #f5eafc;
+$very-light-purple: #e6d5f2;
+$light-purple: #c3a6d8;
+$purple: #9e57d1;
+$dark-purple: #510a84;
 
-$light-purple: #8470ff;
-$purple: #6a5acd;
-$dark-purple: #483d8b;
+/// general
 
 textarea {
   height: 200px;
 }
+
+.button {
+  background-color: $dark-purple;
+  border-radius: 3px;
+}
+
+.button:hover {
+  background-color: $purple;
+}
+
+.form {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $light-purple;
+  border-radius: 3px;
+  background-color: $extremely-light-purple;
+  width: 100%;
+  padding: 20px;
+}
+
+.fullpage-form {
+  width: 70%;
+  margin: auto;
+  padding-top: 60px;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.input {
+  border-radius: 3px;
+}
+
+/// nav bar
+
+.dropdown {
+  background-color: $very-light-purple;
+}
+
+.top-bar {
+  background-color: $very-light-purple;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.menu-text {
+  background-color: $very-light-purple;
+}
+
+a {
+  color: #231c28;
+}
+
+a:hover {
+  color: #510a84;
+}
+
+/// home
+
+.jumbotron {
+  width: 50%;
+  margin: auto;
+  margin-top: 150px;
+  background-color: $extremely-light-purple;
+  text-align: center;
+  height: 250px;
+  border-radius: 10px;
+  padding-top: 30px;
+}
+
+/// signup
+
+
+.or {
+  text-align: center;
+}
+
+/// modals
 
 .modal {
   display: none; /* Hidden by default */
@@ -29,6 +111,8 @@ textarea {
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
+
+/// tabs
 
 .tab-container {
   width: 90%;
