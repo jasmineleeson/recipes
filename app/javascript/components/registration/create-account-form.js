@@ -60,7 +60,7 @@ class CreateAccountForm extends Component {
 
   render () {
     return (
-      <div className='signup-form'>
+      <div className='fullpage-form'>
         <div className='form'>
           {this.state.error.length > 0
           ? (<div className='error-message'><span>{this.state.error}</span></div>) : null}

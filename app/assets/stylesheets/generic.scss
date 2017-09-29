@@ -30,6 +30,12 @@ textarea {
   padding: 20px;
 }
 
+.fullpage-form {
+  width: 70%;
+  margin: auto;
+  padding-top: 60px;
+}
+
 .title {
   font-size: 30px;
   margin-bottom: 10px;
@@ -77,10 +83,9 @@ a:hover {
 
 /// signup
 
-.signup-form {
-  width: 70%;
-  margin: auto;
-  padding-top: 60px;
+
+.or {
+  text-align: center;
 }
 
 /// modals

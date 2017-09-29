@@ -4,8 +4,9 @@ import CreateFamilyForm from './create-family-form'
 
 export default function FamilyForm () {
   return (
-    <div>
+    <div className='fullpage-form'>
       <JoinFamilyForm />
+      <h1 className='or'>OR</h1>
       <CreateFamilyForm />
     </div>
   )

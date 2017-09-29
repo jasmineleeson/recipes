@@ -54,17 +54,19 @@ export default class FamilyForm extends Component {
 
   render () {
     return (
-        <div>
+        <div className='form'>
           {this.state.error.length > 0
           ? (<div className='error-message'><span>{this.state.error}</span></div>) : null}
           <div className='title'>Or create a new family</div>
           <input
+            className='input'
             type='text'
             name='name'
             placeholder='leeson_family'
             onChange={this.handleChange}
           />
           <input
+            className='input'
             type='text'
             name='displayName'
             placeholder='The Leeson Family'
