@@ -27,18 +27,27 @@ $dark-purple: #483d8b;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
-////////////
+.tab-container {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
 
+.tab-content {
+  border-style: solid;
+  border-color: gray;
+}
 
-// .jasmine {
-//   // border-style: solid;
-//   border-color: $dark-purple;
-// }
+.tab:hover {
+  cursor: pointer;
+}
 
-// a {
-//   color: $light-purple;
-// }
+.tab {
+  display: inline-block;
+  width: 100px;
+  border-style: solid;
+}
 
-// a:hover {
-//   color: $purple;
-// }
+.active-tab {
+  background-color: gray;
+}
