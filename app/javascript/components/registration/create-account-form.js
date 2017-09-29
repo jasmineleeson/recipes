@@ -60,41 +60,52 @@ class CreateAccountForm extends Component {
 
   render () {
     return (
-        <div>
+      <div className='signup-form'>
+        <div className='form'>
           {this.state.error.length > 0
           ? (<div className='error-message'><span>{this.state.error}</span></div>) : null}
           <div className='title'>Sign up</div>
+          <label>First name</label>
           <input
+            className='input'
             type='text'
             name='firstName'
             placeholder='Jasmine'
             onChange={this.handleChange}
           />
+          <label>Last name</label>
           <input
+            className='input'
             type='text'
             name='lastName'
             placeholder='Leeson'
             onChange={this.handleChange}
           />
+          <label>Email</label>
           <input
+            className='input'
             type='email'
             name='email'
             placeholder='jasmine.leeson@gmail.com'
             onChange={this.handleChange}
           />
+          <label>Choose a password</label>
           <input
+            className='input'
             type='password'
             name='password'
             placeholder='Choose a password'
             onChange={this.handleChange}
           />
+          <label>Confirm password</label>
           <input
+            className='input'
             type='password'
             name='passwordConfirmation'
             placeholder='Confirm password'
             onChange={this.handleChange}
           />
-          <a 
+          <a
             className='button'
             onClick={this.handleSubmit}
             disabled={this.state.submitting}
@@ -102,6 +113,7 @@ class CreateAccountForm extends Component {
             {this.state.submitting ? 'Getting Started...' : 'Get Started'}
           </a>
         </div>
+      </div>
     )
   }
 }

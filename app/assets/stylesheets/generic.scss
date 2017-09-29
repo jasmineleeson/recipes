@@ -20,6 +20,25 @@ textarea {
   background-color: $purple;
 }
 
+.form {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $light-purple;
+  border-radius: 3px;
+  background-color: $extremely-light-purple;
+  width: 100%;
+  padding: 20px;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.input {
+  border-radius: 3px;
+}
+
 /// nav bar
 
 .dropdown {
@@ -54,6 +73,14 @@ a:hover {
   height: 250px;
   border-radius: 10px;
   padding-top: 30px;
+}
+
+/// signup
+
+.signup-form {
+  width: 70%;
+  margin: auto;
+  padding-top: 60px;
 }
 
 /// modals
