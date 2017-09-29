@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FamilyProfileBase from './family-profile/base'
 import FamilyRecipesBase from './family-recipes/base'
+import Tabs from './tabs'
 
 export default class HomeBase extends Component {
   constructor () {
@@ -18,17 +19,20 @@ export default class HomeBase extends Component {
     }
   }
 
-  switchTab = () => {
+  switchTab = (e) => {
+    const tab = e.target.id
     this.setState({
-      activeTab: this.state.activeTab === 'family' ? 'recipes' : 'family'
+      activeTab: tab
     })
   }
 
   render () {
     return (
-      <div>
-        <button className='button' onClick={this.switchTab}>switchTab</button>
-        {this.renderTab()}
+      <div className='tab-container'>
+        <Tabs activeTab={this.state.activeTab} switchTab={this.switchTab} />
+        <div className='tab-content'>
+          {this.renderTab()}
+        </div>
       </div>
     )
   }
